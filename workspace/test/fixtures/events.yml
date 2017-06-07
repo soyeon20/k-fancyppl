@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ev_num: MyString
+  img_url: MyString
+  name: MyString
+  genre: MyString
+  date: MyString
+  place: MyString
+  lineup: MyString
+
+two:
+  ev_num: MyString
+  img_url: MyString
+  name: MyString
+  genre: MyString
+  date: MyString
+  place: MyString
+  lineup: MyString

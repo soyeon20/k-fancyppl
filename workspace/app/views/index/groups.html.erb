@@ -1,0 +1,37 @@
+<style>
+.box{
+    background-color:#eeeeee;
+}
+.box h4{
+    color:black;
+    text-align:center;
+}
+.box img{
+}
+</style>
+
+<div class ="container-fluid" id ="site" style="height:100%">
+    <%= render :partial => "index/navbar" %>
+    <div class ="container" style="margin-top:20px;">
+        <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix" >
+            <% @event.each do |e| %>
+                <div class='box col2'>
+                    <a href="/festival/<%=e.ev_num%>/main">
+                        <img src='<%=e.img_url%>' alt='<%= e.name %>' >
+                        <h4 style="color:black"><%= e.name %></h4>
+                    </a>
+                </div>
+            <% end %>
+            
+        </div>
+    </div>
+</div>
+<script>
+
+
+$('#masonry-container').imagesLoaded( function(){
+  $('#masonry-container').masonry({
+    itemSelector : '.box'
+  });
+});
+</script>

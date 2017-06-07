@@ -1,0 +1,312 @@
+
+<%  if @checker == "true" %>
+  
+
+
+<style>
+
+html{
+    min-height:100%;
+    margin:0px;
+    padding:0px;
+}
+
+body{
+    min-height:100%;
+    margin:0px;
+    padding:0px;
+}
+
+h2{
+    color: #cccccc;
+    font-style:bold;
+}
+h5{
+    color : #cccccc;
+}
+.hr{
+    margin-top:40px;
+    
+    border:0;
+    width:100%;
+    height:1px;
+    background-color:#cccccc;
+}
+
+#main{
+    margin:0px;
+    padding:0px;
+}
+
+#side_bar{
+    height:100%;
+}
+
+
+#festival_head_bar{
+    background-image : url('<%= @selected_festival.bg_url %>');
+    background-position: center center;
+    background-repeat:no-repeat;
+    height:400px;
+}
+        
+#thumbnail_box{
+    background-image : url('<%= @selected_festival.img_url %>');
+    background-size: contain;  
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+
+.gallery{
+    padding:2px;
+    height:auto;
+}
+.gallery div{
+    height:0;
+    padding-bottom:100%;
+    background-color:red;
+}    
+
+
+#side_bar div{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+#side_bar a{
+    width:100%;
+}
+    
+</style>
+
+<div class ="container-fluid" id ="site" style="height:100%">
+    <%= render :partial => "index/navbar" %>
+    
+    
+    
+    <div class = "row hidden-xs" id ="festival_head_bar" >
+    </div>
+    
+    <div class ="row" id = "main" style = " width:100%; ">
+        
+        <div class ="col-sm-4 hidden-xs" id = "side_bar" style = "padding-right:30px;background-color:black;">
+            <div style = "position:relative; width:198px;float:right;position:relative;top:-240px;" >
+                <div class ="row" id="thumbnail_box" style=" width:100%; height:376px; position:relative; float:right;">
+                </div>
+                
+                <div class="row">
+                    <a type="submit" id="main_btn" class="btn btn-info" href="./main">한눈에 보기</a>
+                </div>
+                
+                <div class="row">
+                    <a type="submit" id = "company_btn" class="btn btn-info" href="#">모임/동행찾기</a>
+                </div>
+                
+                <div class="row">
+                    <a type="submit" id = "livetalk_btn" class="btn btn-info" href="./livetalk">실시간톡</a>
+                </div>
+                
+                <div class="row">
+                    <a type="submit" id = "tips_btn" class="btn btn-info" href="./tips">후기 & 팁</a>
+                </div>
+                
+                
+                <div class = "row" style="margin:0px;padding:0px;">
+                    <div class ="col-md-12" style="margin:0px;padding:0px;">
+                        
+                        
+                        <div class="hr"></div>
+                        <h2>Duration</h2>
+                        <h5><%= @selected_festival.date %></h5>
+                        
+                        
+                        <div class="hr"></div>
+                        <h2>Location</h2>
+                        <h5><%= @selected_festival.place %></h5>
+                        
+                        
+                        <div class="hr"></div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class =" col-sm-8 col-xs-12" id="festival_main" style = "margin:0px;padding:0px; "> 
+            <div class="row col-sm-8 col-xs-12" style="height:100%;">
+        
+                <% if @page == 'main' %>
+                
+                
+                <style>
+                    .boxes{
+                        margin-top:5px;
+                        background-color:#eeeeee;
+                        color:black;
+                        -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 2px;
+                    }
+                    #story_content{
+                        overflow:hidden;
+                        text-overflow:hidden;
+                        margin-right:5px;
+                        height:400px;
+                        
+                        padding-top:10px;
+                        padding-bottom:10px;
+                        
+                    }
+                    
+                    .site_img{
+                        height:180px;
+                    }
+                    .site_img img{
+                        padding-top:5px;
+                        padding-bottom:5px;
+                        width:100%;
+                        height:100%;
+                    }
+                </style>
+                
+                
+                
+                <div class="row" style="margin-top:5px;">
+                    <div class ="row" style="background-color:black;">
+                        <div class="col-md-12 boxes"><p style="font-size:20px;"> 출연진 </p></div>
+                    </div>
+                        
+                     <div class = "row">
+                        <div class="col-md-12 artist_frame boxes" style="background-color:#black;padding:10px;"> 
+                            <div class = "slide">
+                                <% @persons.each  do |p|  %>
+                                    <div class="artist_image group_box" style="position:relative; background-image:url(<%= p[0] %>)" id="photo_box_<%= p[1] %>">    
+                                        <p style="position:absolute; opacity:0.8; bottom:0px; left:0px; width:100%;background-color:white; color:black;"><%= p[1] %></p>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-6 col-xs-12" style="padding-left:0px;">
+                        <div class="row">
+                            <div class="col-xs-12 boxes"><p style="font-size:20px;">Story</p></div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-xs-12 boxes story_content" id="">
+                                노년에게서 그들의 그들의 새 미인을 봄바람이다. 착목한는 들어 청춘이 동산에는 이것이다. 보는 뜨고, 인간이 원질이 있을 풀이 원대하고, 힘있다. 돋고, 따뜻한 커다란 끓는다. 있으며, 이상, 할지니, 따뜻한 것이다. 열락의 뼈 뜨거운지라, 이성은 피가 길지 끓는다. 설레는 열락의 뼈 타오르고 구하지 우리 이는 뭇 황금시대다. 피고 있는 이것을 끓는 것이다. 몸이 스며들어 오직 넣는 봄바람을 길지 그림자는 위하여서. 심장의 보는 대중을 듣기만 거선의 그리하였는가? 동력은 긴지라 끓는 있는 대한 두기 수 얼마나 끓는다. 예수는 무한한 설레는 소담스러운 철환하였는가 피가 ?
+
+보내는 꽃이 청춘 안고, 같은 찬미를 튼튼하며, 황금시대다. 사라지지 눈이 뼈 아름답고 황금시대를 그들은 굳세게 공자는 쓸쓸하랴? 이상, 부패를 새 인도하겠다는 그들의 칼이다. 품었기 뭇 밥을 공자는 것이다. 전인 타오르고 그들의 교향악이다. 쓸쓸한 인간에 가는 미묘한 철환하였는가 것이다. 그러므로 천자만홍이 그것은 바로 속에 곳이 타오르고 피에 약동하다. 미묘한 우는 원대하고, 할지니, 커다란 희망의 자신과 피다. 싹이 풀이 끓는 충분히 우리의 말이다. 않는 주는 이상 굳세게 그들을 바이며, 옷을 것이다.
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6 col-xs-12" style="padding-right:0px;">
+                        <div class="row">
+                            <div class="col-xs-12 boxes"><p style="font-size:20px;">Story</p></div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-xs-12 boxes story_content" id="">
+                                <div class="row">
+                                    <div class="col-sm-6 site_img"><img src="http://www.festival-calendar.com/uploads/1/6/8/8/16888554/7811143_orig.jpg" /></div>
+                                    <div class="col-sm-6 site_img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleowDERHOv2q8CfT-e4q0Y2mysv2AcKqwOK0OwXqtGF71qci85w" /></div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-sm-6 site_img"><img src="http://promoq75.cafe24.com/wp-content/uploads/2014/08/2014-Lets-Rock-Festival-Recap-HD-HD.mp4_20151223_172734.529-1024x576.jpg" /></div>
+                                    <div class="col-sm-6 site_img"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS22fngaUUYnuBpJbb5KBv6Ot8vjouQq_W7VPNdwr7vUygh3qxU8Q" /></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!--
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12 boxes"><p style="font-size:20px;">Story</p></div>
+                        </div>
+                        <div class="row" style="background-color:#eeeeee;margin-top:10px;padding:0px;">
+                            <div class="col-sm-12">
+                                <div class="col-sm-6 site_img"><img src="http://www.festival-calendar.com/uploads/1/6/8/8/16888554/7811143_orig.jpg" /></div>
+                                <div class="col-sm-6 site_img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleowDERHOv2q8CfT-e4q0Y2mysv2AcKqwOK0OwXqtGF71qci85w" /></div>
+                            
+                                <div class="col-sm-6 site_img"><img src="http://promoq75.cafe24.com/wp-content/uploads/2014/08/2014-Lets-Rock-Festival-Recap-HD-HD.mp4_20151223_172734.529-1024x576.jpg" /></div>
+                                <div class="col-sm-6 site_img"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS22fngaUUYnuBpJbb5KBv6Ot8vjouQq_W7VPNdwr7vUygh3qxU8Q" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                
+                <% elsif @page == 'livetalk' %>
+                <iframe id="chat" src="https://nodechat-binkhan.c9users.io/?<%= @passkey %>" style=" width:100%; border: none"></iframe>
+                
+                
+                <% elsif @page == 'tips' %>
+                
+                <%= render :partial => "index/boardview" %>
+                
+                <% elsif @page == 'boardwrite' %>
+                <%= render :partial => "index/boardwrite" %>
+                
+                <% else %>
+                <script type="text/javascript">
+                     window.location.href = "<% @Home%>/404.html"
+                </script>
+                <% end %>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var festival_head_bar_height = 400;
+    
+    var main = document.getElementById('main')
+    main.style.height = (window.innerHeight  ) + 'px';
+    
+    
+    
+    <% if @page == 'main' %>
+    document.getElementById('main_btn').removeAttribute('href');
+    <% elsif @page == 'company' %>
+    document.getElementById('company_btn').removeAttribute('href');
+    <% elsif @page == 'livetalk' %>
+    document.getElementById('chat').style.height = (window.innerHeight  ) + 'px';
+    document.getElementById('livetalk_btn').removeAttribute('href');
+    <% elsif @page == 'tips' %>
+    document.getElementById('tips_btn').removeAttribute('href');
+    <% end %>
+    
+    
+    
+
+</script>
+
+<script src="https://beenkhan-binkhan.c9users.io/assets/slide.js"></script>
+    
+<% elsif %>
+        
+    <script type="text/javascript">
+         window.location.href = "<% @Home%>/404.html"
+    </script>
+<% end %>
+
+
+
+
+
+
+

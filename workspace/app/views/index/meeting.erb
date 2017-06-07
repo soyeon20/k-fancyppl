@@ -1,0 +1,171 @@
+ <script>
+  $( function() {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 2
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: false,
+        numberOfMonths: 2
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
+  
+  
+  
+  <style>
+    h5{ color: white;
+    text-align:left;
+    }
+    
+    .checked {border:solid 2px orange} 
+   </style> 
+
+
+
+<div class ="container-fluid" id ="site">
+    <%= render :partial => "index/navbar" %>
+    
+    
+<div class="container" style="top-margin:80px">
+<form>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4 col-xs-12">
+      <div class="row" style="top-margin:80px">
+        <div class="col-xs-12">
+          <h5>* 모임소개: 
+         <%= @a.intro %></h5>
+        </div>
+      </div>
+    
+     <div class="row">
+      <div class="col-xs-12">
+         <h5>* 분류: 
+         <%= @a.category %></h5>
+        </div>
+      </div>
+     
+     
+      <div class="row">
+      <div class="col-xs-12">
+        <h5>* 장소:
+         <%= @a.place %></h5>
+     
+      </div>
+    </div>
+    
+    
+     <div class="row">
+      <div class="col-xs-12">
+        <h5>* 일시:
+         <%= @a.date %></h5>
+      </div>
+    </div>
+    
+    <div class="row">
+       <div class="col-xs-12">
+       <h5>* 인원:
+        <%= @a.people_num %>
+       </h5>
+      </div>
+ </div>
+      
+      <div class="row">
+         <div class="col-xs-12">
+          <h5>* 특징: 
+           <%= @a.etc %>  </h5>
+          </div>
+      </div>
+  
+  
+ 
+  <div class="form-group">
+    <h5>* 사진: 
+     <%= @a.img_url %>  </h5>
+    </div>
+  </div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledbmySmallModalLabel>
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      등록됐어용~
+    </div>
+  </div>
+</div>
+  
+  
+  </div>
+</form>
+
+</div>  
+
+
+
+
+
+
+<script>
+//AutoComplete
+  $( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "BASIC",
+      "C"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  
+  
+//genreSelect
+$(document).ready(function() {
+
+    $('#blr').on('click', function(){
+        var $$ = $(this)
+        if( !$$.is('.checked')){
+            $$.addClass('checked');
+            $('#imgCheck').prop('checked', true);
+        } else {
+            $$.removeClass('checked');
+            $('#imgCheck').prop('checked', false);
+        }
+    })
+
+});
+
+//modal
+$( document ).ready(function(){
+
+  $('#group_type').click(function(){
+    $('#exampleModal').modal('toggle');
+  });
+});
+
+
+</script>
+<%= @a %>
+<a herf="/users/sign_out">로그아웃</a></a>

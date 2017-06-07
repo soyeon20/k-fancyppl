@@ -1,0 +1,192 @@
+
+<script>
+    var st_time;
+    window.location.href = "<% @Home%>/festival/"+ ev_num +"/main";
+    function ms_down()
+    {
+        var d = new Date();
+        st_time = d.getTime();
+    }
+    function ms_up(ev_num)
+    {
+        var d = new Date();
+        var new_time = d.getTime();
+        
+        if(new_time - st_time <=100)
+        {
+            window.location.href = "<% @Home%>/festival/"+ev_num+"/main"
+        }
+    }
+        
+</script>
+
+<div class="container-fluid" id="site">
+
+    <%= render :partial => "index/maintitle" %>
+    
+    
+    <div class="row" id="content-box">
+        <div class = "col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12">
+            <!-- upcomming event -->
+            <div class="row event_title"> 
+                <div class="col-xs-7 " style="text-align:left"><h4><b>다가오는 이벤트</h4></div>
+                <div class="col-xs-5 " style="text-align:right" ><h4><a href="https://beenkhan-binkhan.c9users.io/groups/1">전체보기</a></h4></div>
+            </div>
+            
+            <div class="row">
+                <!-- images in computer ::::: slide -->
+                <div class = "col-md-12 upcomming_event_frame hidden-xs">
+                    <div class="slide"> 
+                        <% @upcomming_event.each  do |t|  %>
+                                <div class="item group_box" onmousedown="ms_down()" onmouseup="ms_up(<%= t.ev_num %>)" style="position:relative; background-image:url(<%= t.img_url %>);" id="photo_box_<%= t.ev_num %>">
+                                    <p style="position:absolute; opacity:0.8; bottom:0px; left:0px; width:100%;background-color:white; color:black;">
+                                        <%= t.name %>
+                                    </p>
+                                </div>
+                        <% end %>
+                    </div>
+                </div>
+                
+                <!-- images in mobile :::::  -->
+                <div class="visible-xs">
+                    <% @upcomming_event.each_with_index  do |group,index|  %>
+                        <% if index<4 %>
+                        
+                            <% if index%2 == 0 %>
+                                <div class="row">
+                            <% end %>
+                                    <div class="col-xs-6 group_xs_box" >
+                                        <div style="background-image:url(<%=group['img_src'] %>);"></div>
+                                    </div>
+                            <% if index%2 == 1 %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            
+            
+            <!-- event may you love -->
+            <div class="row event_title">
+                <div class="col-xs-8" style="text-align:left"><h4>당신이 사랑할 이벤트</h4></div>
+                <div class="col-xs-4" style="text-align:right" ><h4><a href="https://beenkhan-binkhan.c9users.io/groups/1">전체보기</a></h4></div>
+            </div>
+            
+            <div class="row">
+                <!-- images in computer ::::: slide -->
+                <div class = "col-md-12 may_you_love_event_frame hidden-xs">
+                    <div class="slide"> 
+                        <% @may_you_love_event.each do |t|  %>
+                            <div class="item group_box" onmousedown="ms_down()" onmouseup="ms_up(<%= t.ev_num %>)" style="position:relative; background-image:url(<%= t.img_url %>);" id="photo_box_<%= t.ev_num %>">
+                                <p style="position:absolute; opacity:0.8; bottom:0px; left:0px; width:100%;background-color:white; color:black;">
+                                    <%= t.name %>
+                                </p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                
+                <!-- images in mobile :::::  -->
+                <div class="visible-xs">
+                    <% @may_you_love_event.each_with_index  do |group,index|  %>
+                        <% if index<4 %>
+                        
+                            <% if index%2 == 0 %>
+                                <div class="row">
+                            <% end %>
+                                    <div class="col-xs-6 group_xs_box" >
+                                        <div style="background-image:url(<%=group['img_src'] %>);"></div>
+                                    </div>
+                            <% if index%2 == 1 %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            
+            
+            <!-- top group -->
+            <div class="row event_title">
+                <div class="col-xs-8" style="text-align:left"><h4>인기 모임</h4></div>
+                <div class="col-xs-4 group-all-button" style="text-align:right" ><h4><a href="https://beenkhan-binkhan.c9users.io/groups/1">전체보기</a></h4></div>
+            </div>
+            
+            <div class="row">
+                <!-- images in computer ::::: slide -->
+                <div class = "col-md-12 top_group_frame hidden-xs">
+                    <div class="slide"> 
+                        <% @top_group.each  do |m|  %>
+                            <div class="item group_box" style="background-image:url(<%= m.img_url %>);" id="photo_box_<%= m.ev_num %>"></div>
+                        <% end %>
+                    </div>
+                </div>
+                
+                <!-- images in mobile :::::  -->
+                <div class="visible-xs">
+                    <% @top_group.each_with_index  do |group,index|  %>
+                        <% if index<4 %>
+                        
+                            <% if index%2 == 0 %>
+                                <div class="row">
+                            <% end %>
+                                    <div class="col-xs-6 group_xs_box" >
+                                        <div style="background-image:url(<%=group['img_src'] %>);"></div>
+                                    </div>
+                            <% if index%2 == 1 %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            
+            <!-- may you love group -->
+            <div class="row event_title">
+                <div class="col-xs-8" style="text-align:left"><h4>당신이 사랑할 모임</h4></div>
+                <div class="col-xs-4" style="text-align:right" ><h4><a href="https://beenkhan-binkhan.c9users.io/groups/1">전체보기</a></h4></div>
+            </div>
+            
+            <div class="row">
+                <!-- images in computer ::::: slide -->
+                <div class = "col-md-12 may_you_love_group_frame hidden-xs">
+                    <div class="slide"> 
+                        <% @may_you_love_group.each  do |m|  %>
+                            <div class="item group_box" style="background-image:url(<%= m.img_url %>);" id="photo_box_<%= m.ev_num %>">
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                
+                <!-- images in mobile :::::  -->
+                <div class="visible-xs">
+                    <% @may_you_love_group.each_with_index  do |group,index|  %>
+                        <% if index<4 %>
+                        
+                            <% if index%2 == 0 %>
+                                <div class="row">
+                            <% end %>
+                                    <div class="col-xs-6 group_xs_box" >
+                                        <div style="background-image:url(<%=group['img_src'] %>);"></div>
+                                    </div>
+                            <% if index%2 == 1 %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+
+</div>
+
+
+<script src="https://beenkhan-binkhan.c9users.io/assets/slide.js"></script>
+        

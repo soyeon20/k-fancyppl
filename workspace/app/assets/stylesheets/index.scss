@@ -1,0 +1,173 @@
+// Place all the styles related to the index controller here.
+// They will automatically be included in application.css./sit
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html{
+    margin:0px;
+    padding :0px;
+    height:100%;
+    background-color:black;
+    color:  #dbdada;
+}
+body{
+    margin:0px;
+    padding :0px;
+    height:100%;
+    background-color:black;
+    color:  #dbdada;
+}
+
+.row{
+    margin :0px;
+    padding :0px;
+}
+
+#site{
+    height:100%;
+    margin:0px;
+    padding:0px;
+    background-color:black;
+}
+
+a:link    {color:  #dbdada; text-decoration:none;}
+a:visited    {color:  #dbdada; text-decoration:none;}
+a:hover    {color:  #dbdada; text-decoration:none;}
+a:active    {color:  #dbdada; text-decoration:none;}
+
+
+
+
+#headbar{
+    margin:0px;
+    padding:0px;
+    
+    height:50%; 
+    width:100%; 
+    background-image:url("/assets/main-top.jpg");
+    background-size:     cover;  
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+#nav{
+    background-color:black;
+    
+    padding-top:10px;
+    padding-bottom:10px;
+    
+    color: #dbdada;
+    font-style:bold;
+    font-size:18px;
+    text-align:center;
+}
+#nav #event_search a{
+   
+}
+
+
+
+#nav div{
+    padding:0px;
+}
+
+@media screen and (max-width: 768px){
+    #nav{
+        font-size:18px;
+    }
+    #nav div{
+        margin:0px;
+        padding:0px;
+    }
+   
+}
+
+#content-box{
+    text-align:center;
+}
+
+.event_title div{
+    margin:0px;
+    padding:0px;
+}
+
+.group_box{
+    background-size:contain;
+    
+    background-size:     cover;  
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+
+
+.group_xs_box{
+    height: 50vw;
+    padding:10px;
+}
+
+.group_xs_box div{
+    height:100%;
+    
+    background-size:     cover;  
+    background-position: center center;
+    background-repeat:no-repeat;
+    
+    -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+    
+    
+}
+
+
+
+#headbar2{
+    margin:0px;
+    padding:0px;
+    
+    height:20%; 
+    width:100%; 
+    //background-image:url("/assets/Kasbian.jpg");
+    background-color:#ffffff;
+    background-size:     cover;  
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+
+
+#headbar_msg_left p{
+    position:relative; 
+}
+
+
+
+
+.group_frame .festival_frame{
+    height: 200px;
+}
+
+.item {
+    text-align:center;
+    height: 200px;
+    width: 200px;
+    float:left;
+    margin:5px;
+    -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 2px;
+}
+
+.active{
+    opacity:0.5;
+}
+
+
+
+
+.artist_frame{
+    height:180px;
+}
+
+.artist_image {
+    text-align:center;
+    height: 150px;
+    width: 150px;
+    float:left;
+    margin:5px;
+    
+    -webkit-border-radius: 7px;-moz-border-radius: 7px;border-radius: 7px;
+}

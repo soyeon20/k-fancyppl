@@ -1,0 +1,17 @@
+<div class="container" style="padding-top:30px; padding-bottom:20px;">
+    <% @event.each do |e| %>
+        <div class="row" style="margin-top:10px;">
+            <a href="/evparse/list/<%= e.ev_num %>">
+                <div class="col-md-2" style="text-align:center;">
+                    <%= image_tag(e.img_url, :alt => e.name, :width => 111, :height => 135) %>
+                </div>
+                <div class="col-md-10" style="padding:10px;">
+                    <b><%= e.name %></b> | <%= e.ev_num %> | <%= e.id %> <br>
+                    <%= e.bg_url %> <br>
+                    <%= e.genre %> | <%= e.date %> | <%= e.place %> | <%= e.lineup %><br><br>
+                    <a href="/edit/<%= e.ev_num%>">|수정|</a>
+                </div>
+            </a>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,11 @@
+
+<div class="container" style="padding-top:30px; padding-bottom:20px;">
+이름 : <%= @event.name %><br>
+축제넘버 : <%= @event.ev_num %><br>
+<form method="POST" action="/evparse/back_save" enctype="multipart/form-data">
+사진 url : <input type='text' size='150' name='img' value='<%= @event.img_url %>'><br>
+배경 url : <input type='text' size='150' name='bg' value='<%= @event.bg_url %>'><br>
+<input type='hidden' name='num' value='<%= @event.ev_num %>'>
+<button type="submit">수정</button>
+</form>
+</div>

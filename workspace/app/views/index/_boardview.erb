@@ -1,0 +1,48 @@
+<!-- title area -->
+
+<style>
+#board_wrapper{
+    font-size:15px;
+}
+
+#board_wrapper #board_title{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+#board_wrapper .row{
+    margin-bottom:5px;
+}
+#writing_bar{
+    margin-bottom:5px;
+}
+</style>
+
+<div id = "board_wrapper">
+    <div class ="row" id = "writing_bar">
+        <div class="col-xs-offset-10 col-xs-2">
+            <a type="submit" id="main_btn" class="btn btn-info col-xs-12" style="color:black;" href="./boardwrite">글쓰기</a>
+        </div>
+    </div>
+    
+    <div class="row" id = "board_title">
+        <div class="col-sm-8">제목 </div>
+        <div class="col-sm-2">작성자</div>
+        <div class="col-sm-2">조회수 </div>
+    </div>
+    
+    <% @subject.each do | subj | %>
+    <div class="row">
+        <div class="col-sm-8"><%= subj['key'] %></div>
+        <div class="col-sm-2"><%= subj['name'] %></div>
+        <div class="col-sm-2">0</div>
+    </div>
+    <hr>
+    <% end %>
+</div>
+
+
+
+
+
+

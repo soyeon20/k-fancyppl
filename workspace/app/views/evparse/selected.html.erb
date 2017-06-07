@@ -1,0 +1,21 @@
+<div class="container" style="padding-top:30px; padding-bottom:20px;">
+    <div class="row" style="margin-top:10px; margin-bottom:20px;">
+            <div class="col-md-2" style="text-align:center;">
+                <%= image_tag(@event.img_url, :alt => @event.name, :width => 111, :height => 135) %>
+            </div>
+            <div class="col-md-10" style="padding:10px;">
+                <b><%= @event.name %></b> | <%= @event.ev_num %> <br>
+                <%= @event.genre %> | <%= @event.date %> | <%= @event.place %> | <%= @event.lineup %><br><br>
+            </div>
+    </div>
+    
+    
+    <% @persons.each do |person| %>
+    
+        <div style="margin-top:10px; margin-right:5px; display:inline-block; width:111px;">
+            <%= image_tag(person[0], :alt => person[1], :width => 111, :height => 135) %><br>
+            <%= person[1] %>
+        </div>
+        
+    <% end %>
+</div>

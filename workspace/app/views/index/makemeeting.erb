@@ -1,0 +1,227 @@
+ <script>
+  $( function() {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 2
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: false,
+        numberOfMonths: 2
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
+  
+  
+  
+  <style>
+    h5{ color: white;
+    text-align:left;
+    }
+    
+    .checked {border:solid 2px orange} 
+   </style> 
+
+
+
+<div class ="container-fluid" id ="site">
+    <%= render :partial => "index/navbar" %>
+    
+    
+<div class="container" style="top-margin:80px">
+<form action="/make_meeting" method="POST">
+    
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4 col-xs-12">
+      <div class="row" style="top-margin:80px">
+        <div class="col-xs-12">
+          <h5>모임소개</h5>
+          <input type="text" rows="2" class="form-control" id="meeting_title" name="meeting_title" placeholder="어떤 모임인가요?">
+        </div>
+      </div>
+    
+     <div class="row">
+      <div class="col-xs-12">
+        <h5>분류</h5>
+       <!-- Button trigger modal -->
+      <input type="textbox" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="meeting_category" name="meeting_category" placeholder="　어떤 주제 혹은 이벤트와 관련되었나요?　">
+      
+        　　
+     
+      
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+             
+            <div class="ui-widget">
+              <label for="tags">이벤트명 검색: </label>
+              <input id="tags">
+            </div>
+             
+             <form id="form1">
+              <img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/unchecked_checkbox.png" title="blr" id="blr" class="" />
+              <input type="checkbox" id="imgCheck" name="imgCheck" value="barney" style="visibility: hidden;" />
+            </form>
+                
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-default" value="Save" /></input>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       
+            </div>
+          </div>
+        </div>
+      </div>
+              
+        
+        
+      
+        
+        
+        
+        
+        
+      </div>
+      </div>
+      
+      
+      
+     
+      <div class="row">
+      <div class="col-xs-12">
+        <h5>장소</h5>
+        <input type="text" id="meeting_place" name="meeting_place" class="form-control" placeholder="장소 혹은 지역은 어디인가요?">
+      </div>
+    </div>
+    
+    
+     <div class="row">
+      <div class="col-xs-12">
+        <h5>일시</h5>
+        <div class="row">
+         <input type="text" class="form-control" id="meeting_date" name="meeting_date" style="width: 120px;" placeholder="언제인가요?">
+        ~ 
+        <input type="text" class="form-control" id="to" name="to" style="width: 120px;">
+         </div>
+   
+      </div>
+    </div>
+    
+        <div class="row">
+       <div class="col-xs-12">
+       <h5>인원</h5>
+        <input type="text" class="form-control" id="meeting_people_num" name="meeting_people_num" placeholder="모집인원은 몇명인가요?">
+      </div>
+      </div>
+      
+      <div class="row">
+         <div class="col-xs-12">
+          <h5>추가 설명</h5>
+        <input type="string" class="form-control" id="meeting_etc" name="meeting_etc" placeholder="분위기나 특징을 설명해줄래요?">
+        </div>
+      </div>
+      
+     
+      <div class="row">
+  <div class="col-xs-12">
+    <h5>사진첨부</h5>
+    <input type="file" id="exampleInputFile">
+  </div></div>
+  <div class="row">
+     <div class="col-xs-12"><center>
+  <button type="submit" class="btn btn-default"  data-toggle="modal" data-target=".bs-example-modal-sm">등록하기</button>
+  </center></div></div>
+  
+
+    </div>
+  </div>
+  
+ 
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledbmySmallModalLabel>
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      등록됐어용~
+    </div>
+  </div>
+</div>
+  
+  
+  </div>
+</form>
+
+</div>  
+
+
+
+
+
+
+<script>
+//AutoComplete
+  $( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "BASIC",
+      "C"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  
+  
+//genreSelect
+$(document).ready(function() {
+
+    $('#blr').on('click', function(){
+        var $$ = $(this)
+        if( !$$.is('.checked')){
+            $$.addClass('checked');
+            $('#imgCheck').prop('checked', true);
+        } else {
+            $$.removeClass('checked');
+            $('#imgCheck').prop('checked', false);
+        }
+    })
+
+});
+
+//modal
+$( document ).ready(function(){
+
+  $('#meeting_category').click(function(){
+    $('#exampleModal').modal('toggle');
+  });
+});
+
+
+</script>
+<%= @a %>
+<a herf="/users/sign_out">로그아웃</a></a>
